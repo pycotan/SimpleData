@@ -11,7 +11,7 @@ import SwiftUI
 struct Weights2025JApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            FirstContentView()
         }
     }
 }
