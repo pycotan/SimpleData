@@ -9,7 +9,16 @@ import SwiftUI
 
 struct AddInputView: View {
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        Button(action: {
+            print("tap buton")
+        }) {
+            Text("体重入力")
+                .frame(maxWidth: .infinity, minHeight: 60)
+        }
+        .accentColor(Color.white)
+        .background(Color.blue)
+        .cornerRadius(.infinity)
+        .padding(.horizontal, 30)
     }
 }
 

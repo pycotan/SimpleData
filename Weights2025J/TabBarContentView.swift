@@ -8,8 +8,31 @@
 import SwiftUI
 
 struct TabBarContentView: View {
+    // タブの選択項目を保持する
+        @State var selection = 1
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        TabView(selection: $selection) {
+
+                    AddInputView()   // Viewファイル①
+                        .tabItem {
+                            Label("Page1", systemImage: "1.circle")
+                        }
+                        .tag(1)
+
+                    TableContentView()   // Viewファイル②
+                        .tabItem {
+                            Label("Page2", systemImage: "2.circle")
+                        }
+                        .tag(2)
+
+                    FirstContentView()  // Viewファイル③
+                        .tabItem {
+                            Label("Page3", systemImage: "3.circle")
+                        }
+                        .tag(3)
+
+                }
     }
 }
 
