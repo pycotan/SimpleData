@@ -9,7 +9,7 @@ import SwiftUI
 import SwiftData
 
 struct TableContentView: View {
-    @Query private var weightDataList: [WeightData]
+    @Query(sort: [SortDescriptor(\WeightData.weightDate, order: .reverse)]) private var weightDataList: [WeightData]
     @Environment(\.modelContext) private var modelContext
     private var dateFormatter: DateFormatter {
         let formatter = DateFormatter()
