@@ -9,12 +9,12 @@ import SwiftUI
 
 struct TabBarContentView: View {
     // タブの選択項目を保持する
-    @State var selection = 1
+    @State var selectedTab: Int = 1
     
     var body: some View {
-        TabView(selection: $selection) {
+        TabView(selection: $selectedTab) {
 
-                    AddInputView()   // Viewファイル①
+                    AddInputView(selectedTab:$selectedTab)   // Viewファイル①
                         .tabItem {
                             Label("入力", systemImage: "1.circle")
                         }

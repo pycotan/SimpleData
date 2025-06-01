@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct AddInputView: View {
+    @Binding var selectedTab: Int
     @State var message:String = "データなし"
     @State var double: Double = 0.0
     @FocusState var isFocused: Bool
@@ -17,9 +18,10 @@ struct AddInputView: View {
     @State var weightData = WeightData(title: "",weightNum: 0,weightDate: Date())
     @Environment(\.modelContext) private var modelContext
     
-    init() {
+    init(selectedTab:Binding<Int>) {
         dateFormatter.dateFormat = "YYYY/MM/dd(E)HH:mm:ss"
         dateFormatter.locale = Locale(identifier: "ja_jp")
+        self._selectedTab = selectedTab
     }
     
     var body: some View {
@@ -30,6 +32,7 @@ struct AddInputView: View {
                 message = String(double)
                 weightData = WeightData(title: "", weightNum: double, weightDate: nowDate)
                 modelContext.insert(weightData)
+                self.selectedTab  = 2
             }){
                 Text("体重入力")
                     .frame(maxWidth: .infinity, minHeight: 60)
@@ -63,5 +66,5 @@ struct AddInputView: View {
 }
 
 #Preview {
-    AddInputView()
+    AddInputView(selectedTab: .constant(1))
 }
