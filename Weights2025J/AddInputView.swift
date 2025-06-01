@@ -14,6 +14,8 @@ struct AddInputView: View {
     @State var dateText = ""
     @State var nowDate = Date()
     private let dateFormatter = DateFormatter()
+    @State var weightData = WeightData(title: "",weightNum: 0,weightDate: Date())
+    @Environment(\.modelContext) private var modelContext
     
     init() {
         dateFormatter.dateFormat = "YYYY/MM/dd(E)HH:mm:ss"
@@ -26,6 +28,8 @@ struct AddInputView: View {
                 print("tap buton")
                 isFocused = false
                 message = String(double)
+                weightData = WeightData(title: "", weightNum: double, weightDate: nowDate)
+                modelContext.insert(weightData)
             }){
                 Text("体重入力")
                     .frame(maxWidth: .infinity, minHeight: 60)

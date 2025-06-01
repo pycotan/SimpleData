@@ -6,13 +6,25 @@
 //
 
 import SwiftUI
+import SwiftData
 
 struct TableContentView: View {
+    @Query private var weightDataList: [WeightData]
+    @Environment(\.modelContext) private var modelContext
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        NavigationStack {
+            List{ ForEach(Array(weightDataList.enumerated()), id: \.offset) { index, weightData in
+                HStack {
+                    Text(String(weightData.weightNum))
+                    Spacer()
+                    Text(weightData.weightDate, format: .dateTime.month(.wide).day().year())
+                }
+            }}}
     }
 }
 
 #Preview {
     TableContentView()
+        .modelContainer(for: WeightData.self, inMemory: true)
 }

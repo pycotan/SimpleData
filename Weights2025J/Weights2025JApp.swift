@@ -13,5 +13,6 @@ struct Weights2025JApp: App {
         WindowGroup {
             TabBarContentView()
         }
+        .modelContainer(for: WeightData.self)
     }
 }
