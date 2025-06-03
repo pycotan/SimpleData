@@ -12,7 +12,6 @@ import SwiftData
 @Model
 final class WeightData {
     var title: String
-    var finished = false
     var weightNum:Double
     var weightDate:Date
 

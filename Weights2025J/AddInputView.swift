@@ -42,12 +42,12 @@ struct AddInputView: View {
             .cornerRadius(.infinity)
             .padding(.horizontal, 50)
             TextField("", value: $double, format: .number)
-                                .textFieldStyle(.roundedBorder)
-                    // ここでキーボードを数字のみにしている
-                    .keyboardType(.decimalPad)
-                    .padding(20)
-                    .multilineTextAlignment(.center)
-                    .focused($isFocused)
+                .textFieldStyle(.roundedBorder)
+            // ここでキーボードを数字のみにしている
+                .keyboardType(.decimalPad)
+                .padding(20)
+                .multilineTextAlignment(.center)
+                .focused($isFocused)
             Text( dateText.isEmpty ? "\(dateFormatter.string(from: nowDate))" : dateText)
                 .frame(maxWidth: .infinity, minHeight: 60)
                 .onAppear {
@@ -57,10 +57,16 @@ struct AddInputView: View {
                     }
                 }
             Label("１ヶ月の平均体重", systemImage: "figure.walk.circle.fill")
-                            .font(.largeTitle)
-                            .foregroundColor(.gray)
+                .font(.largeTitle)
+                .foregroundColor(.gray)
             Text( message )
-                    .frame(maxWidth: .infinity, minHeight: 60)
+                .frame(maxWidth: .infinity, minHeight: 60)
+        }
+        .frame(width: UIScreen.main.bounds.width,
+               height: UIScreen.main.bounds.height)
+        .contentShape(RoundedRectangle(cornerRadius: 10))
+        .onTapGesture {
+            isFocused = false
         }.padding()
     }
 }
