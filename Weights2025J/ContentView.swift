@@ -8,12 +8,25 @@
 import SwiftUI
 
 struct ContentView: View {
+    @State var message:String = "データなし"
+    
     var body: some View {
         VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Weight Diary").bold()
+            Label("10回分の平均値", systemImage: "figure.walk.circle.fill")
+                .font(.largeTitle)
+                .foregroundColor(.gray)
+            Text( message )
+                .frame(maxWidth: .infinity, minHeight: 80)
+            Label("100回分の平均値", systemImage: "figure.walk.circle.fill")
+                .font(.largeTitle)
+                .foregroundColor(.gray)
+            Text( message )
+                .frame(maxWidth: .infinity, minHeight: 80)
+            Label("100回分の最低値", systemImage: "figure.walk.circle.fill")
+                .font(.largeTitle)
+                .foregroundColor(.gray)
+            Text( message )
+                .frame(maxWidth: .infinity, minHeight: 80)
         }
         .padding()
     }

@@ -9,7 +9,6 @@ import SwiftUI
 
 struct AddInputView: View {
     @Binding var selectedTab: Int
-    @State var message:String = "データなし"
     @State var double: Double = 0.0
     @FocusState var isFocused: Bool
     @State var dateText = ""
@@ -29,7 +28,6 @@ struct AddInputView: View {
             Button(action: {
                 print("tap buton")
                 isFocused = false
-                message = String(double)
                 weightData = WeightData(title: "", weightNum: double, weightDate: nowDate)
                 modelContext.insert(weightData)
                 self.selectedTab  = 2
@@ -56,11 +54,6 @@ struct AddInputView: View {
                         dateText = "\(dateFormatter.string(from: nowDate))"
                     }
                 }
-            Label("１ヶ月の平均体重", systemImage: "figure.walk.circle.fill")
-                .font(.largeTitle)
-                .foregroundColor(.gray)
-            Text( message )
-                .frame(maxWidth: .infinity, minHeight: 60)
         }
         .frame(width: UIScreen.main.bounds.width,
                height: UIScreen.main.bounds.height)

@@ -26,9 +26,9 @@ struct TabBarContentView: View {
                         }
                         .tag(2)
 
-                    FirstContentView()  // Viewファイル③
+                    ContentView()  // Viewファイル③
                         .tabItem {
-                            Label("設定", systemImage: "3.circle")
+                            Label("統計", systemImage: "3.circle")
                         }
                         .tag(3)
 
