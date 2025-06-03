@@ -32,7 +32,7 @@ struct AddInputView: View {
                 modelContext.insert(weightData)
                 self.selectedTab  = 2
             }){
-                Text("体重入力")
+                Text("数値入力")
                     .frame(maxWidth: .infinity, minHeight: 60)
             }
             .accentColor(Color.white)
