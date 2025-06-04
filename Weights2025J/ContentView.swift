@@ -19,7 +19,6 @@ struct ContentView: View {
     @State var min01:Double = 0
     @State var median:Double = 0
     
-    //最小値
     @State var numArray: Array<Double> = []
     
     var body: some View {
@@ -46,6 +45,8 @@ struct ContentView: View {
                 .frame(maxWidth: .infinity, minHeight: 60)
         }
         .onAppear(){
+            numArray = []
+            
             for i in 0..<weightDataArray.count {
                 numArray.append(weightDataArray[i].weightNum)
             }
@@ -56,18 +57,21 @@ struct ContentView: View {
             let sortedNumArray = numArray.sorted()
             // 配列の要素数
             let count = sortedNumArray.count
-            // 平均
-            average01 = (Int(sortedNumArray.reduce(0, +))/count)
             
-            // 中央値
-            // 要素数が奇数の場合
-            if count % 2 != 0 {
-                median = sortedNumArray[count / 2]
-            } else {
-            // 要素数が偶数の場合
-                let middle1 = sortedNumArray[count / 2 - 1]
-                let middle2 = sortedNumArray[count / 2]
-                median = (Double(middle1) + Double(middle2)) / 2.0
+            if(count != 0){
+                // 平均
+                average01 = (Int(sortedNumArray.reduce(0, +))/count)
+                
+                // 中央値
+                // 要素数が奇数の場合
+                if count % 2 != 0 {
+                    median = sortedNumArray[count / 2]
+                } else {
+                    // 要素数が偶数の場合
+                    let middle1 = sortedNumArray[count / 2 - 1]
+                    let middle2 = sortedNumArray[count / 2]
+                    median = (Double(middle1) + Double(middle2)) / 2.0
+                }
             }
         }
         .padding()
